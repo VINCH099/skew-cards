@@ -1,0 +1,157 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #010101, #270252);
+  min-height: 100vh;
+}
+
+.conteiner {
+  width: 1024px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-around;
+  gap: 40px 20px;
+  flex-wrap: wrap;
+  counter-reset: num 0;
+}
+
+.card__content {
+  position: relative;
+  padding: 20px;
+  color: #fff;
+}
+
+.card__content::before {
+  content: counter(num, decimal-leading-zero);
+  position: absolute;
+  top: -60px;
+  right: 20px;
+  padding: 0;
+  margin: 0;
+  font-size: 160px;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.06);
+  transition: 0.5s;
+  font-weight: 700;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+.card__button {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  margin: 20px 0 0;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  transition: 0.5s;
+  transform: translateY(-40px);
+  opacity: 0;
+  visibility: hidden;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 12px;
+  z-index: 1;
+}
+
+.card__button:hover {
+  color: #010101;
+  background-color: #fff;
+}
+
+.card {
+  width: 260px;
+  min-height: 380px;
+  cursor: pointer;
+  position: relative;
+  background-color: #040a20;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  counter-increment: num;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  transform: skew(2deg, 2deg);
+  z-index: -1;
+  transition: 1s;
+}
+
+.card:hover .card__content .card__button {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.card:hover .card__content::before {
+  top: -100px;
+}
+
+.card:nth-child(1n)::before {
+  background: linear-gradient(#ff0000, #0037ff);
+}
+
+.card:nth-child(2n)::before {
+  background: linear-gradient(#00b80f, #ff00aa);
+}
+
+.card:nth-child(3n)::before {
+  background: linear-gradient(#00b0e6, #ff0000);
+}
